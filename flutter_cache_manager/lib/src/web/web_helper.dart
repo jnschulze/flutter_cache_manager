@@ -97,7 +97,7 @@ class WebHelper {
             url,
             key: key,
             validTill: clock.now(),
-            relativePath: '${const Uuid().v1()}.file',
+            relativePath: '${const Uuid().v4()}.file',
           )
         : cacheObject.copyWith(url: url);
     final response = await _download(cacheObject, authHeaders);
@@ -173,7 +173,7 @@ class WebHelper {
         unawaited(_removeOldFile(filePath));
       }
       // Store new file on different path
-      filePath = '${const Uuid().v1()}$fileExtension';
+      filePath = '${const Uuid().v4()}$fileExtension';
     }
     return cacheObject.copyWith(
       relativePath: filePath,
